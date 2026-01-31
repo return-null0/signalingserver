@@ -45,6 +45,10 @@ io.on('connection', (socket) => {
     }
   });
 
+  socket.on('chat-message', (payload) => {
+    socket.to(payload.roomId).emit('chat-message', payload.text);
+  });
+  
   socket.on('offer', (payload) => {
 
     socket.to(payload.roomId).emit('offer', payload.sdp);
