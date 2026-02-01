@@ -48,6 +48,8 @@ io.on('connection', (socket) => {
   socket.on('chat-message', (payload) => {
     socket.to(payload.roomId).emit('chat-message', payload.text);
   });
+
+  socket.on('media-toggle', (p) => socket.to(p.roomId).emit('media-toggle', p));
   
   socket.on('offer', (payload) => {
 
